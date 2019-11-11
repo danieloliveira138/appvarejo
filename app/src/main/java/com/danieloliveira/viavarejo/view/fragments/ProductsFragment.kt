@@ -6,12 +6,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ExpandableListView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.danieloliveira.viavarejo.R
 import com.danieloliveira.viavarejo.models.ProductsResponse
 import com.danieloliveira.viavarejo.utils.getJsonFile
+import com.danieloliveira.viavarejo.utils.navigatoToActivity
+import com.danieloliveira.viavarejo.view.activitys.MainActivity
 import com.danieloliveira.viavarejo.view.adapters.ProductsAdapter
 import com.danieloliveira.viavarejo.viewmodel.ProductsViewModel
 import com.google.gson.Gson
@@ -40,7 +43,8 @@ class ProductsFragment : BaseFragment() {
         recyclerProducts.apply {
             layoutManager = GridLayoutManager(context, 2)
             adapter = ProductsAdapter(productList.produtos)
+            layoutAnimation = AnimationUtils
+                .loadLayoutAnimation(context, R.anim.layout_animation_fall_down)
         }
     }
-
 }
