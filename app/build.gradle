@@ -26,6 +26,12 @@ android {
 }
 
 dependencies {
+    // Google GSON
+    implementation 'com.google.code.gson:gson:2.8.6'
+    // Glide for best images
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'

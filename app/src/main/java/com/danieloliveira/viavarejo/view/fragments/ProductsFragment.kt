@@ -6,9 +6,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ExpandableListView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.danieloliveira.viavarejo.R
+import com.danieloliveira.viavarejo.models.ProductsResponse
+import com.danieloliveira.viavarejo.utils.getJsonFile
+import com.danieloliveira.viavarejo.view.adapters.ProductsAdapter
 import com.danieloliveira.viavarejo.viewmodel.ProductsViewModel
-import getJsonFile
+import com.google.gson.Gson
+import kotlinx.android.synthetic.main.products_fragment.*
 
 class ProductsFragment : BaseFragment() {
 
@@ -27,7 +34,13 @@ class ProductsFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(ProductsViewModel::class.java)
         val json = getJsonFile(R.raw.produtos, activity!!.applicationContext)
+        val productList = Gson().fromJson<ProductsResponse>(json, ProductsResponse::class.java)
         Log.d("MOCK_RESPONSE", "JSON: $json")
+
+        recyclerProducts.apply {
+            layoutManager = GridLayoutManager(context, 2)
+            adapter = ProductsAdapter(productList.produtos)
+        }
     }
 
 }
