@@ -6,13 +6,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import android.view.MenuItem
 import com.google.android.material.navigation.NavigationView
 import android.view.Menu
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.commitNow
 import com.danieloliveira.viavarejo.R
 import com.danieloliveira.viavarejo.enums.FragmentRoute
 import com.danieloliveira.viavarejo.model.FragmentData
-import com.danieloliveira.viavarejo.view.fragments.HomeFragment
-import com.danieloliveira.viavarejo.view.fragments.ProductsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
@@ -69,12 +66,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         return true
     }
 
-    private fun setHomeFragment(fragmentRoute: FragmentRoute): FragmentData {
+    private fun setHomeFragment(fragmentRouter: FragmentRoute): FragmentData {
+        val fragmentData = fragmentRouter.fragment
         supportFragmentManager.commitNow(allowStateLoss = false) {
-            setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
-            replace(R.id.fragmentContent, fragmentRoute.fragment.fragment, fragmentRoute.fragment.TAG)
+            setCustomAnimations(R.anim.enter_left, R.anim.exit_right, R.anim.enter_right, R.anim.exit_left)
+            replace(R.id.fragmentContent, fragmentData.fragment, fragmentData.TAG)
         }
-        return fragmentRoute.fragment
+        return fragmentData
     }
 
 }
