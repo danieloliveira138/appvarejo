@@ -1,7 +1,7 @@
 package com.danieloliveira.viavarejo.enums
 
 import com.danieloliveira.viavarejo.R
-import com.danieloliveira.viavarejo.model.FragmentData
+import com.danieloliveira.viavarejo.models.FragmentData
 import com.danieloliveira.viavarejo.view.fragments.HomeFragment
 import com.danieloliveira.viavarejo.view.fragments.ProductsFragment
 

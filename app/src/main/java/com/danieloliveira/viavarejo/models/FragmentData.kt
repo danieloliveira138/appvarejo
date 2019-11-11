@@ -1,4 +1,4 @@
-package com.danieloliveira.viavarejo.model
+package com.danieloliveira.viavarejo.models
 
 import androidx.fragment.app.Fragment
 

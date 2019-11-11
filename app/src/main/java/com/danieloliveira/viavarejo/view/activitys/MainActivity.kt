@@ -9,7 +9,7 @@ import android.view.Menu
 import androidx.fragment.app.commitNow
 import com.danieloliveira.viavarejo.R
 import com.danieloliveira.viavarejo.enums.FragmentRoute
-import com.danieloliveira.viavarejo.model.FragmentData
+import com.danieloliveira.viavarejo.models.FragmentData
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
