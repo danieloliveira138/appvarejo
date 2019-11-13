@@ -1,8 +1,8 @@
 package com.danieloliveira.viavarejo.models
 
 data class Marketplace(
-    val lojistaPadrao: LojistaPadrao = LojistaPadrao(),
-    val lojistasEmDestaque: List<LojistasEmDestaque> = listOf(),
+    val lojistaPadrao: Lojista = Lojista(),
+    val lojistasEmDestaque: List<Lojista> = listOf(),
     val maiorPreco: Int = 0,
     val menorPreco: Int = 0
 )

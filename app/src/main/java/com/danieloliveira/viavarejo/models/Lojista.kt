@@ -1,6 +1,6 @@
 package com.danieloliveira.viavarejo.models
 
-data class LojistasEmDestaque(
+data class Lojista(
     val compraOnline: Boolean = false,
     val eleito: Boolean = false,
     val id: Int = 0,
