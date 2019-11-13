@@ -41,10 +41,7 @@ class ProductsFragment : BaseFragment() {
         Log.d("MOCK_RESPONSE", "JSON: $json")
 
         recyclerProducts.apply {
-            layoutManager = GridLayoutManager(context, 2)
             adapter = ProductsAdapter(productList.produtos)
-            layoutAnimation = AnimationUtils
-                .loadLayoutAnimation(context, R.anim.layout_animation_fall_down)
         }
     }
 }

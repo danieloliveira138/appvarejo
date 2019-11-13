@@ -11,7 +11,6 @@ import com.danieloliveira.viavarejo.viewmodel.HomeViewModel
 
 class HomeFragment : BaseFragment() {
 
-    var rexr = 1
     companion object {
         fun newInstance() = HomeFragment()
     }
