@@ -12,7 +12,7 @@ class HolderTitle(private val view: View): RecyclerView.ViewHolder(view), IProdu
     override fun bind(data: Any) {
         if (data is ProductDetail) {
             view.title.text = data.nome
-            view.description.text = data.descricao
+            view.description.text = data.modelo.padrao.nome
             view.previousPrice.strike(data.modelo.padrao.preco.precoAnterior.brazilCurrency())
             view.currentPrice.text = data.modelo.padrao.preco.precoAtual.brazilCurrency()
             view.specialCondition.text = data.modelo.padrao.preco.planoPagamento

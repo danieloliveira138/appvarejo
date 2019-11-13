@@ -8,14 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.danieloliveira.viavarejo.R
 import com.danieloliveira.viavarejo.enums.DetailAdapterViewType
 import com.danieloliveira.viavarejo.models.ProductDetail
-import com.danieloliveira.viavarejo.view.holders.HolderButton
-import com.danieloliveira.viavarejo.view.holders.HolderProductImage
-import com.danieloliveira.viavarejo.view.holders.HolderTitle
-import com.danieloliveira.viavarejo.view.holders.IProductHolder
+import com.danieloliveira.viavarejo.view.holders.*
 
 class DetailAdapter(private val productDetail: ProductDetail,
                     private val fragmentManager: FragmentManager?)
     :RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    private var expandDescriptionHolder = true
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
@@ -36,12 +35,12 @@ class DetailAdapter(private val productDetail: ProductDetail,
                 return HolderButton(view)
             }
             DetailAdapterViewType.PRODUCT_FEATURES.type -> {
-                view =  inflater.inflate(R.layout.view_pager_layout, parent, false)
-                return HolderProductImage(view)
+                view =  inflater.inflate(R.layout.holder_description, parent, false)
+                return HoldeDescription(view)
             }
             DetailAdapterViewType.PRODUCT_AVALIATION.type -> {
-                view =  inflater.inflate(R.layout.view_pager_layout, parent, false)
-                return HolderProductImage(view)
+                view =  inflater.inflate(R.layout.holder_rating, parent, false)
+                return HolderRating(view)
             }
             DetailAdapterViewType.WHO_SAW_BOUGHT.type -> {
                 view =  inflater.inflate(R.layout.view_pager_layout, parent, false)
@@ -75,10 +74,20 @@ class DetailAdapter(private val productDetail: ProductDetail,
                 holder.bind(productDetail.id)
             }
             DetailAdapterViewType.PRODUCT_FEATURES.type -> {
-
+                holder as HoldeDescription
+                holder.bind(
+                    HolderDescriptionData(productDetail.maisInformacoes[0], expandDescriptionHolder)
+                )
+                holder.itemView.setOnClickListener {
+                    holder.bind(
+                        HolderDescriptionData(productDetail.maisInformacoes[0], expandDescriptionHolder)
+                    )
+                    notifyItemChanged(DetailAdapterViewType.PRODUCT_FEATURES.type)
+                    expandDescriptionHolder = !expandDescriptionHolder
+                }
             }
             DetailAdapterViewType.PRODUCT_AVALIATION.type -> {
-
+                holder.bind(Any())
             }
             DetailAdapterViewType.WHO_SAW_BOUGHT.type -> {
 

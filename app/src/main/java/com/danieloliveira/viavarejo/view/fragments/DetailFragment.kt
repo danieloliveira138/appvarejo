@@ -2,14 +2,11 @@ package com.danieloliveira.viavarejo.view.fragments
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 
 import com.danieloliveira.viavarejo.R
 import com.danieloliveira.viavarejo.models.ProductDetail
@@ -17,7 +14,7 @@ import com.danieloliveira.viavarejo.utils.getJsonFile
 import com.danieloliveira.viavarejo.view.adapters.DetailAdapter
 import com.danieloliveira.viavarejo.viewmodel.DetailViewModel
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.detail_fragment.*
+import kotlinx.android.synthetic.main.recycler_layout.*
 
 class DetailFragment : BaseFragment() {
 
@@ -34,7 +31,7 @@ class DetailFragment : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.detail_fragment, container, false)
+        return inflater.inflate(R.layout.recycler_layout, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
