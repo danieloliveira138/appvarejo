@@ -7,7 +7,7 @@ import com.danieloliveira.viavarejo.models.Imagen
 import com.danieloliveira.viavarejo.view.adapters.ImagesPageAdapter
 import kotlinx.android.synthetic.main.view_pager_layout.view.*
 
-class HolderProductImage(private val view: View): RecyclerView.ViewHolder(view), IProductHolder {
+class HolderBaseImage(private val view: View): RecyclerView.ViewHolder(view), IBaseHolder {
 
     override fun bind(data: Any) {
         if (data is ImageHolderData) {

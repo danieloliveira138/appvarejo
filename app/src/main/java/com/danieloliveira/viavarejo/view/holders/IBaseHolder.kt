@@ -1,5 +1,5 @@
 package com.danieloliveira.viavarejo.view.holders
 
-interface IProductHolder {
+interface IBaseHolder {
     fun bind(data: Any)
 }

@@ -24,7 +24,7 @@ class DetailAdapter(private val productDetail: ProductDetail,
         when (viewType) {
             DetailAdapterViewType.PRODUCT_IMAGE.type -> {
                 view =  inflater.inflate(R.layout.view_pager_layout, parent, false)
-                return HolderProductImage(view)
+                return HolderBaseImage(view)
             }
             DetailAdapterViewType.PRODUCT_TITLE.type -> {
                 view =  inflater.inflate(R.layout.product_title, parent, false)
@@ -47,23 +47,23 @@ class DetailAdapter(private val productDetail: ProductDetail,
                 return HolderWhoSawBought(view)
             }
             DetailAdapterViewType.SECOND_BUY_BUTTON.type -> {
-                view =  inflater.inflate(R.layout.view_pager_layout, parent, false)
-                return HolderProductImage(view)
+                view =  inflater.inflate(R.layout.holder_button_buy, parent, false)
+                return HolderButton(view)
             }
             else -> {
                 view =  inflater.inflate(R.layout.view_pager_layout, parent, false)
-                return HolderProductImage(view)
+                return HolderBaseImage(view)
             }
         }
     }
 
-    override fun getItemCount(): Int = 6
+    override fun getItemCount(): Int = 7
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        holder as IProductHolder
+        holder as IBaseHolder
         when (position) {
             DetailAdapterViewType.PRODUCT_IMAGE.type -> {
-                holder.bind(HolderProductImage.ImageHolderData(
+                holder.bind(HolderBaseImage.ImageHolderData(
                     fragmentManager, productDetail.modelo.padrao.imagens
                 ))
             }
@@ -93,7 +93,7 @@ class DetailAdapter(private val productDetail: ProductDetail,
                 holder.bind(Any())
             }
             DetailAdapterViewType.SECOND_BUY_BUTTON.type -> {
-
+                holder.bind(true)
             }
             else -> {
 

@@ -8,7 +8,7 @@ import com.danieloliveira.viavarejo.utils.brazilCurrency
 import com.danieloliveira.viavarejo.utils.strike
 import kotlinx.android.synthetic.main.product_title.view.*
 
-class HolderTitle(private val view: View): RecyclerView.ViewHolder(view), IProductHolder {
+class HolderTitle(private val view: View): RecyclerView.ViewHolder(view), IBaseHolder {
     override fun bind(data: Any) {
         if (data is ProductDetail) {
             view.title.text = data.nome

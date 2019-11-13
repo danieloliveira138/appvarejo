@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.danieloliveira.viavarejo.R
 import com.danieloliveira.viavarejo.models.Valore
 import com.danieloliveira.viavarejo.view.holders.HolderDescriptionDetail
-import com.danieloliveira.viavarejo.view.holders.IProductHolder
+import com.danieloliveira.viavarejo.view.holders.IBaseHolder
 
 class DescriptionAdapter(
     private val values: List<Valore>):
@@ -21,7 +21,7 @@ class DescriptionAdapter(
     override fun getItemCount(): Int = values.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        holder as IProductHolder
+        holder as IBaseHolder
         holder.bind(values[position])
     }
 }

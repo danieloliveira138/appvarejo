@@ -9,7 +9,7 @@ import com.danieloliveira.viavarejo.models.Valore
 import kotlinx.android.synthetic.main.holder_description.view.*
 import kotlinx.android.synthetic.main.textview_holder_title.view.*
 
-class HoldeDescription(private val view: View): RecyclerView.ViewHolder(view), IProductHolder {
+class HoldeDescription(private val view: View): RecyclerView.ViewHolder(view), IBaseHolder {
 
     override fun bind(data: Any) {
         if(data is HolderDescriptionData) {
