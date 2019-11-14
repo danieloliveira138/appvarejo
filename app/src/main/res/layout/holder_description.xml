@@ -5,11 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:layout_marginTop="16dp"
-    android:layout_marginBottom="16dp"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp"
-    android:paddingBottom="16dp">
+    style="@style/AppTheme.BaseHolder">
 
     <include
         layout="@layout/textview_holder_title"
