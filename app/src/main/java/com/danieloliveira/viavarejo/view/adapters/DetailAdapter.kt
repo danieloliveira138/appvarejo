@@ -47,8 +47,8 @@ class DetailAdapter(private val productDetail: ProductDetail,
                 return HolderWhoSawBought(view)
             }
             DetailAdapterViewType.SECOND_BUY_BUTTON.type -> {
-                view =  inflater.inflate(R.layout.holder_button_buy, parent, false)
-                return HolderButton(view)
+                view =  inflater.inflate(R.layout.holder_button_no_background, parent, false)
+                return HolderButtonNoBackGround(view)
             }
             else -> {
                 view =  inflater.inflate(R.layout.view_pager_layout, parent, false)
@@ -93,7 +93,7 @@ class DetailAdapter(private val productDetail: ProductDetail,
                 holder.bind(Any())
             }
             DetailAdapterViewType.SECOND_BUY_BUTTON.type -> {
-                holder.bind(true)
+                holder.bind(productDetail.id)
             }
             else -> {
 

@@ -13,11 +13,7 @@
         android:id="@+id/buttonBuy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
-        android:background="@color/colorAccent"
-        android:text="@string/comprar"
-        android:textSize="20sp"
-        android:textColor="#ffffff"
+        style="@style/AppTheme.ButtonBuy"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="20dp"/>
 
