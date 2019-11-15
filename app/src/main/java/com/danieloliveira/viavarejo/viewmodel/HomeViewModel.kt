@@ -1,7 +1,13 @@
 package com.danieloliveira.viavarejo.viewmodel
 
-import androidx.lifecycle.ViewModel;
+import android.content.Context
+import androidx.lifecycle.ViewModel
+import com.danieloliveira.viavarejo.BuildConfig
+import com.danieloliveira.viavarejo.models.VersionInformation
 
 class HomeViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+
+    fun getVersionNameAndCode(): VersionInformation =
+        VersionInformation(BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE)
+
 }

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 
 import com.danieloliveira.viavarejo.R
 import com.danieloliveira.viavarejo.viewmodel.HomeViewModel
+import kotlinx.android.synthetic.main.home_fragment.*
 
 class HomeFragment : BaseFragment() {
 
@@ -25,7 +26,12 @@ class HomeFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        // TODO: Use the ViewModel
+
+        val versionInformation = viewModel.getVersionNameAndCode()
+
+        versionCode.text = String.format("version_code (${versionInformation.versionCode})")
+
+        versionName.text = String.format("version (${versionInformation.versionName})")
     }
 
 }
