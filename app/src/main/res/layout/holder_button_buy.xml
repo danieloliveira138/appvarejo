@@ -10,8 +10,6 @@
         android:id="@+id/buttonBuy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/AppTheme.ButtonBuy"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="20dp"/>
+        style="@style/AppTheme.ButtonBuy"/>
 
 </LinearLayout>

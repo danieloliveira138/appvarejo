@@ -2,19 +2,14 @@ package com.danieloliveira.viavarejo.view.fragments
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
-import android.widget.ExpandableListView
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.danieloliveira.viavarejo.R
+import com.danieloliveira.viavarejo.custom.ItemDecorationGridLayout
 import com.danieloliveira.viavarejo.models.ProductsResponse
 import com.danieloliveira.viavarejo.utils.getJsonFile
-import com.danieloliveira.viavarejo.utils.navigatoToActivity
-import com.danieloliveira.viavarejo.view.activitys.MainActivity
+import com.danieloliveira.viavarejo.view.adapters.Orientation
 import com.danieloliveira.viavarejo.view.adapters.ProductsAdapter
 import com.danieloliveira.viavarejo.viewmodel.ProductsViewModel
 import com.google.gson.Gson
@@ -36,12 +31,13 @@ class ProductsFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(ProductsViewModel::class.java)
-        val json = getJsonFile(R.raw.produtos, activity!!.applicationContext)
-        val productList = Gson().fromJson<ProductsResponse>(json, ProductsResponse::class.java)
-        Log.d("MOCK_RESPONSE", "JSON: $json")
+
+        val ProdMockjson = getJsonFile(R.raw.produtos, activity!!.applicationContext)
+        val productList = Gson().fromJson<ProductsResponse>(ProdMockjson, ProductsResponse::class.java)
 
         recyclerProducts.apply {
-            adapter = ProductsAdapter(productList.produtos)
+            adapter = ProductsAdapter(Orientation.VERTICAL, productList.produtos)
+            this.addItemDecoration(ItemDecorationGridLayout(false, 1, 2))
         }
     }
 }

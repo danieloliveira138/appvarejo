@@ -8,9 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.danieloliveira.viavarejo.R
 import com.danieloliveira.viavarejo.enums.DetailAdapterViewType
 import com.danieloliveira.viavarejo.models.ProductDetail
+import com.danieloliveira.viavarejo.models.OtherProduct
 import com.danieloliveira.viavarejo.view.holders.*
 
 class DetailAdapter(private val productDetail: ProductDetail,
+                    private val otherProductsList: List<OtherProduct>,
                     private val fragmentManager: FragmentManager?)
     :RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -90,7 +92,7 @@ class DetailAdapter(private val productDetail: ProductDetail,
                 holder.bind(Any())
             }
             DetailAdapterViewType.WHO_SAW_BOUGHT.type -> {
-                holder.bind(Any())
+                holder.bind(otherProductsList)
             }
             DetailAdapterViewType.SECOND_BUY_BUTTON.type -> {
                 holder.bind(productDetail.id)

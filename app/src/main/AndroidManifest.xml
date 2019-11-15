@@ -19,7 +19,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n"
-        tools:ignore="AllowBackup">
+        tools:ignore="AllowBackup"
+        android:screenOrientation="portrait">
         <activity
             android:name=".view.activitys.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">

@@ -1,7 +1,7 @@
 package com.danieloliveira.viavarejo.models
 
 data class Produto(
-    val classificacao: Int = 0,
+    val classificacao: Double = 4.4,
     val descricao: String = "",
     val disponivel: Boolean = false,
     val id: Int = 0,
