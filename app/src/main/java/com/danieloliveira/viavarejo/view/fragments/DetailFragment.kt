@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.danieloliveira.viavarejo.R
@@ -17,10 +18,11 @@ import com.danieloliveira.viavarejo.view.adapters.DetailAdapter
 import com.danieloliveira.viavarejo.viewmodel.DetailViewModel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import io.reactivex.functions.Consumer
+import io.reactivex.Observer
+import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.recycler_layout.*
 
-class DetailFragment : BaseFragment(), Consumer<DetailData> {
+class DetailFragment : BaseFragment(), Observer<DetailData> {
 
     companion object {
         fun newInstance(id: Int): DetailFragment {
@@ -51,45 +53,32 @@ class DetailFragment : BaseFragment(), Consumer<DetailData> {
 
         Log.d("OUTROS_PRODUTOS", otherProdResponse.toString())
 
-//        recyclerDetail.apply {
-//            layoutManager = LinearLayoutManager(context)
-//            setHasFixedSize(true)
-//            adapter = DetailAdapter(productDetail, otherProdResponse, fragmentManager)
-//        }
-
         viewModel.requestProductDetail(this)
     }
 
-//    override fun onComplete() {
-//        viewModel.detailData?.let {
-//            setupRecycler(it)
-//        }
-//    }
-//
-//    override fun onSubscribe(d: Disposable) {
-//        viewModel.disposable = d
-//    }
-//
-//    override fun onNext(t: DetailData) {
-//        viewModel.detailData
-//    }
-//
-//    override fun onError(e: Throwable) {
-//        Toast.makeText(this.context, "Erro na requisição", Toast.LENGTH_SHORT).show()
-//        Log.d("RX_ERROR", String.format("ERROR: ${e.message}"))
-//    }
+    override fun onComplete() {
+
+    }
+
+    override fun onSubscribe(d: Disposable) {
+        viewModel.disposable = d
+    }
+
+    override fun onNext(t: DetailData) {
+        t?.let {
+            setupRecycler(it)
+        }
+    }
+
+    override fun onError(e: Throwable) {
+        Toast.makeText(this.context, "Erro na requisição", Toast.LENGTH_SHORT).show()
+        Log.d("RX_ERROR", String.format("ERROR: ${e.message}"))
+    }
 
 
     override fun onDestroy() {
         super.onDestroy()
         viewModel.destroy(viewModel.disposable)
-    }
-
-    override fun accept(t: DetailData?) {
-
-        t?.let {
-            setupRecycler(it)
-        }
     }
 
     private fun setupRecycler(detailData: DetailData) {

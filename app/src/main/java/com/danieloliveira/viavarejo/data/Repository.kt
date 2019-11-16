@@ -20,7 +20,7 @@ class Repository {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(observer)
 
-    fun requestProductDet(consumer: Consumer<DetailData>) =
+    fun requestProductDet(observer: Observer<DetailData>) =
         Observable.zip(
             service.getProduct(),
             service.getOtherProducts(),
@@ -32,7 +32,7 @@ class Repository {
             })
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(consumer)
+            .subscribe(observer)
 }
 
 data class DetailData(
