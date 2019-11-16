@@ -14,23 +14,48 @@ android {
         versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding {
-        enabled = true
+
+    android {
+        buildTypes {
+            debug {
+                buildConfigField "String", "BASE_URL", "\"http://www.mocky.io/\""
+            }
+            release {
+                buildConfigField "String", "BASE_URL", "\"http://www.mocky.io/\""
+            }
+        }
     }
 }
 
 dependencies {
+    def okhttpVersion = '3.12.0'
+
     // Google GSON
     implementation 'com.google.code.gson:gson:2.8.6'
     // Glide for best images
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.6.2'
+    // Gson retrofit converter
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
+    // Rx Retrofit adapter
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    // Okhttp adapter
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
+
+    // OkHttp
+    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    // Rx
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
