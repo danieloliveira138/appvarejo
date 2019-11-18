@@ -5,6 +5,8 @@ import androidx.fragment.app.commitNow
 import com.danieloliveira.viavarejo.R
 import com.danieloliveira.viavarejo.enums.FragmentRoute
 import com.danieloliveira.viavarejo.models.FragmentData
+import org.jetbrains.anko.alert
+import org.jetbrains.anko.yesButton
 
 abstract class BaseActivity: AppCompatActivity() {
 
@@ -24,5 +26,12 @@ abstract class BaseActivity: AppCompatActivity() {
     abstract fun setupToolbar()
 
     abstract fun setupDrawerMenu()
+
+    fun alertmessage(message: String) {
+        alert {
+            this.message = message
+            yesButton { }
+        }.show()
+    }
 
 }

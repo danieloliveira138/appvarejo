@@ -21,23 +21,23 @@ fun Double.brazilCurrency(): String {
         "#ERROR#"
     }
 }
-fun String.brazilCurrency(): String {
-    return try {
-        NumberFormat
-            .getCurrencyInstance(Locale("pt", "BR")).format(this.toDouble())
-    } catch (e: Exception) {
-        "#ERROR#"
-    }
-}
 
-fun Any.isListProductsResponse(): Boolean {
-    if (this is List<*>) {
-        if (this.isNotEmpty() && this[0] is OtherProduct) {
-            return true
-        }
+fun Any.isListProductsResponse(): Boolean =
+    this is List<*> && this.isNotEmpty() && this[0] is OtherProduct
+
+fun Any.isListProduto(): Boolean =
+    this is List<*> && !this.isNullOrEmpty() && this[0] is Produto
+
+fun Any.castToListProduto(): List<Produto> {
+    if (this.isListProduto()) {
+        return this as List<Produto>
     }
 
-    return false
+    return if (this.isListProductsResponse()) {
+        val list = this.castToListProductosResponse()
+        list.toProdutoList()
+    } else
+        listOf()
 }
 
 fun Any.castToListProductosResponse(): List<OtherProduct> {
