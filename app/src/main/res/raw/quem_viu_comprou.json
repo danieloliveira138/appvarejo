@@ -1,0 +1,57 @@
+[
+  {
+    "id": 9619402,
+    "sku": 13196230,
+    "nome": "Smart TV LED 43\" Full HD LG 43LK5750PSA com IPS, Inteligência Artificial ThinQ AI, WI-FI, Processador Quad Core, HDR 10 Pro, HDMI e USB",
+    "imagemUrl": "http://www.casasbahia-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=1002897513",
+    "precoAtual": 1439,
+    "precoAnterior": 1999,
+    "percentualCompra": 38,
+    "classificacao": 5,
+    "parcelamento": "10x de R$143,90"
+  },
+  {
+    "id": 2849249,
+    "sku": 5838916,
+    "nome": "Smart TV LED 43” Full HD Samsung 43J5200 com ConnectShare Movie, Screen Mirroring, Wi-Fi, Entrada HDMI e USB",
+    "imagemUrl": "http://www.casasbahia-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=228062235",
+    "precoAtual": 1399,
+    "precoAnterior": 2322.84,
+    "percentualCompra": 36,
+    "classificacao": 4.4,
+    "parcelamento": "10x de R$139,90"
+  },
+  {
+    "id": 9820429,
+    "sku": 13400014,
+    "nome": "Smart TV LED 43\" Full HD Samsung 43J5290 com Wide Color Enhancer Plus, Espelhamento de Tela, Wi-Fi, Dolby Digital Plus, HDMI e USB",
+    "imagemUrl": "http://www.casasbahia-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=1015264969",
+    "precoAtual": 1499,
+    "precoAnterior": 1999,
+    "percentualCompra": 15,
+    "classificacao": 0,
+    "parcelamento": "10x de R$149,90"
+  },
+  {
+    "id": 9757168,
+    "sku": 13335022,
+    "nome": "Smart TV LED 43\" Full HD AOC LE43S5970S com Wi-Fi, Conversor Digital Integrado, App Gallery, Botão Netflix, Entradas HDMI e USB",
+    "imagemUrl": "http://www.casasbahia-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=1022260238",
+    "precoAtual": 1399,
+    "precoAnterior": 1799,
+    "percentualCompra": 5,
+    "classificacao": 0,
+    "parcelamento": "10x de R$139,90"
+  },
+  {
+    "id": 9820425,
+    "sku": 13399991,
+    "nome": "Smart TV LED 32\" HD Samsung 32J4290 com Plataforma Tizen, Wide Color Enhancer Plus, Espelhamento de Tela, Wi-Fi, Dolby Digital Plus, HDMI e USB",
+    "imagemUrl": "http://www.casasbahia-imagens.com.br/Control/ArquivoExibir.aspx?IdArquivo=1015264893",
+    "precoAtual": 999,
+    "precoAnterior": 1649,
+    "percentualCompra": 4,
+    "classificacao": 0,
+    "parcelamento": "10x de R$99,90"
+  }
+]
