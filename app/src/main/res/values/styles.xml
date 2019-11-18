@@ -26,8 +26,16 @@
 
     <style name="AppTheme.BaseHolder">
         <item name="android:layout_marginBottom">32dp</item>
-        <item name="android:padding">16dp</item>
         <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="AppTheme.BaseHolder.Padding" parent="AppTheme.BaseHolder">
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <style name="AppTheme.BaseHolder.TopDownPadding" parent="AppTheme.BaseHolder">
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingTop">16dp</item>
     </style>
 
 

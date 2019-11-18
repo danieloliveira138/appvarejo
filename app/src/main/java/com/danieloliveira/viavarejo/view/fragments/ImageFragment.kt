@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.danieloliveira.viavarejo.R
 import kotlinx.android.synthetic.main.fragment_image.*
 
@@ -35,6 +36,7 @@ class ImageFragment : BaseFragment() {
 
         Glide.with(this)
             .load(imageUrl)
+            .transition(DrawableTransitionOptions.withCrossFade())
             .into(imageView)
     }
 

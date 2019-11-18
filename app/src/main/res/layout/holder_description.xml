@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    style="@style/AppTheme.BaseHolder">
+    style="@style/AppTheme.BaseHolder.Padding">
 
     <include
         layout="@layout/textview_holder_title"
