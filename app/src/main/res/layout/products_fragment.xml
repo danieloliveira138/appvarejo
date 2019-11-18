@@ -10,13 +10,20 @@
         tools:context=".view.fragments.ProductsFragment"
         android:background="@color/white">
 
-    <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerProducts"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layoutAnimation="@anim/layout_animation_fall_down"
-            app:spanCount="2"
-            android:background="@color/grey"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
+            android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerProducts"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layoutAnimation="@anim/layout_animation_fall_down"
+                app:spanCount="2"
+                android:background="@color/grey"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </FrameLayout>

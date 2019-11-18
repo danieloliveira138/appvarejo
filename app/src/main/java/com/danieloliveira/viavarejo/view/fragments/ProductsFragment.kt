@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.danieloliveira.viavarejo.R
 import com.danieloliveira.viavarejo.custom.ItemDecorationGridLayout
 import com.danieloliveira.viavarejo.models.ProductsResponse
@@ -20,7 +21,8 @@ import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
-class ProductsFragment : BaseFragment(), Observer<ProductsResponse> {
+class ProductsFragment : BaseFragment(), Observer<ProductsResponse>
+    , SwipeRefreshLayout.OnRefreshListener {
 
     companion object {
         fun newInstance() = ProductsFragment()
@@ -41,14 +43,18 @@ class ProductsFragment : BaseFragment(), Observer<ProductsResponse> {
 
         setupRecycler()
 
-        productsViewModel.requestProducts(this)
-
-        val ProdMockjson = getJsonFile(R.raw.produtos, activity!!.applicationContext)
-        val productList = Gson().fromJson<ProductsResponse>(ProdMockjson, ProductsResponse::class.java)
+        fechtData()
 
     }
 
+    private fun fechtData() {
+        swipeLayout.isRefreshing = true
+        productsViewModel.requestProducts(this)
+    }
+
     override fun onComplete() {
+        productsViewModel.destroy(productsViewModel.disposable)
+        swipeLayout.isRefreshing = false
         productsAdapter.notifyDataSetChanged()
     }
 
@@ -75,5 +81,12 @@ class ProductsFragment : BaseFragment(), Observer<ProductsResponse> {
             adapter = productsAdapter
             this.addItemDecoration(ItemDecorationGridLayout(false, 1, 2))
         }
+        swipeLayout.setOnRefreshListener(this)
+        swipeLayout.isRefreshing = true
+    }
+
+    override fun onRefresh() {
+        swipeLayout.isRefreshing = true
+        fechtData()
     }
 }

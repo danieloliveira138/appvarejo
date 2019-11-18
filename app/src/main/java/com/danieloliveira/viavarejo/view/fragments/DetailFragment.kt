@@ -1,12 +1,14 @@
 package com.danieloliveira.viavarejo.view.fragments
 
 import android.os.Bundle
+import android.os.SystemClock
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.danieloliveira.viavarejo.R
 import com.danieloliveira.viavarejo.models.DetailData
 import com.danieloliveira.viavarejo.models.ProductDetail
@@ -24,7 +26,7 @@ import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
-class DetailFragment : BaseFragment(), Observer<DetailData> {
+class DetailFragment : BaseFragment(), Observer<DetailData>, SwipeRefreshLayout.OnRefreshListener {
 
     companion object {
         fun newInstance(id: Int): DetailFragment {
@@ -48,22 +50,19 @@ class DetailFragment : BaseFragment(), Observer<DetailData> {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val json = getJsonFile(R.raw.detalhe_produto, activity!!.applicationContext)
-        val productDetail = Gson().fromJson<ProductDetail>(json, ProductDetail::class.java)
-
-        val otherProdMockjson = getJsonFile(R.raw.quem_viu_comprou, activity!!.applicationContext)
-        val otherProdResponse =
-            Gson().fromJson<List<OtherProduct>>(otherProdMockjson, object : TypeToken<List<OtherProduct>>() {}.type)
-
-        Log.d("OUTROS_PRODUTOS", otherProdResponse.toString())
-
         setupRecycler()
 
-        detailViewModel.requestProductDetail(this)
+        fetchData()
 
     }
 
+    private fun fetchData() {
+        detailViewModel.requestProductDetail(this)
+    }
+
     override fun onComplete() {
+        detailViewModel.destroy(detailViewModel.disposable)
+        swipeLayout.isRefreshing = false
         detailAdapter.notifyDataSetChanged()
     }
 
@@ -92,5 +91,12 @@ class DetailFragment : BaseFragment(), Observer<DetailData> {
             setHasFixedSize(true)
             adapter = detailAdapter
         }
+        swipeLayout.setOnRefreshListener(this)
+        swipeLayout.isRefreshing = true
+    }
+
+    override fun onRefresh() {
+        swipeLayout.isRefreshing = true
+        fetchData()
     }
 }

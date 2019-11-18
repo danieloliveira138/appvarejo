@@ -1,5 +1,6 @@
 package com.danieloliveira.viavarejo.viewmodel
 
+import com.danieloliveira.viavarejo.BuildConfig
 import com.danieloliveira.viavarejo.data.Repository
 import com.danieloliveira.viavarejo.models.DetailData
 import com.danieloliveira.viavarejo.data.RepositoryImpl
@@ -14,12 +15,14 @@ class DetailViewModel(private val repository: Repository) : BaseViewModel() {
 
     fun connectionState() : Boolean = repository.hasNetworkEnable()
 
-    fun requestProductDetail(observer: Observer<DetailData>) {
-        if (connectionState())
-            repository.requestProductDetail(observer)
-        else
-            observer.onError(Throwable(message = "Ops, você esta sem internet no momento!"))
-    }
+    fun requestProductDetail(observer: Observer<DetailData>) =
+        when {
+            BuildConfig.BUILD_TYPE == "mockResources" ->
+                repository.requestProductDetailFromMockAssets(observer)
 
+            connectionState() -> repository.requestProductDetail(observer)
+
+            else -> observer.onError(Throwable(message = "Ops, você esta sem internet no momento!"))
+        }
 
 }

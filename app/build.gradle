@@ -13,6 +13,9 @@ android {
         versionCode 10000
         versionName "1.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testFunctionalTest = true
+        testHandleProfiling = true
+        signingConfig signingConfigs.debug
     }
 
     buildTypes {
@@ -20,10 +23,16 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        mockResources {
+            debuggable = true
+        }
     }
 
     android {
         buildTypes {
+            mockResources{
+                buildConfigField "String", "BASE_URL", "\"http://www.mocky.io/\""
+            }
             debug {
                 buildConfigField "String", "BASE_URL", "\"http://www.mocky.io/\""
             }
@@ -35,7 +44,7 @@ android {
 }
 
 dependencies {
-    def okhttp_version = '3.12.0'
+    def okhttp_version = '4.2.2'
     def retrofit_version = '2.6.2'
     def glide_version = '4.10.0'
     def koin_version = '2.0.1'
@@ -51,9 +60,9 @@ dependencies {
     // Gson retrofit converter
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     // Rx Retrofit adapter
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.2'
     // Okhttp adapter
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.2'
 
     // OkHttp
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"

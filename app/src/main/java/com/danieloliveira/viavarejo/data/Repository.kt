@@ -8,4 +8,7 @@ interface Repository {
     fun requestProducts(observer: Observer<ProductsResponse>)
     fun requestProductDetail(observer: Observer<DetailData>)
     fun hasNetworkEnable(): Boolean
+
+    fun requestProductsFromMockAssets(observer: Observer<ProductsResponse>)
+    fun requestProductDetailFromMockAssets(observer: Observer<DetailData>)
 }
