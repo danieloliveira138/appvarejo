@@ -1,17 +1,25 @@
 package com.danieloliveira.viavarejo.viewmodel
 
 import com.danieloliveira.viavarejo.data.Repository
+import com.danieloliveira.viavarejo.data.RepositoryImpl
 import com.danieloliveira.viavarejo.models.ProductsResponse
 import com.danieloliveira.viavarejo.models.Produto
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
+import java.nio.channels.NetworkChannel
 
-class ProductsViewModel : BaseViewModel() {
+class ProductsViewModel(private val repository: Repository) : BaseViewModel() {
 
-    val repository = Repository()
     var products = mutableListOf<Produto>()
     var disposable: Disposable? = null
 
-    fun requestProducts(observer: Observer<ProductsResponse>) = repository.requestProducts(observer)
+    fun connectionState() : Boolean = repository.hasNetworkEnable()
+
+    fun requestProducts(observer: Observer<ProductsResponse>){
+        if (connectionState())
+            repository.requestProducts(observer)
+        else
+            observer.onError(Throwable(message = "Ops, sem internet no momento!"))
+    }
 
 }
