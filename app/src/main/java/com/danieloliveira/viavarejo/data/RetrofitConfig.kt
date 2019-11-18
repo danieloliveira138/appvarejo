@@ -23,6 +23,6 @@ class RetrofitConfig {
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
 
-    fun getService() = retrofit.create(ViaVarejoService::class.java)
+    fun getService(): ViaVarejoService = retrofit.create(ViaVarejoService::class.java)
 
 }
