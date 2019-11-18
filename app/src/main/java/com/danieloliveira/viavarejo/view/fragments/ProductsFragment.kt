@@ -47,7 +47,7 @@ class ProductsFragment : BaseFragment(), Observer<ProductsResponse>
 
     }
 
-    private fun fechtData() {
+    fun fechtData() {
         swipeLayout.isRefreshing = true
         productsViewModel.requestProducts(this)
     }

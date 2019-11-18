@@ -36,6 +36,7 @@ class ImageFragment : BaseFragment() {
 
         Glide.with(this)
             .load(imageUrl)
+            .error(R.drawable.error_image)
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(imageView)
     }

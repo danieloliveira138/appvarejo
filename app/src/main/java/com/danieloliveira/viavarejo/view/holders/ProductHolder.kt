@@ -4,6 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.danieloliveira.viavarejo.R
 import com.danieloliveira.viavarejo.models.Produto
 import com.danieloliveira.viavarejo.utils.brazilCurrency
 import com.danieloliveira.viavarejo.utils.navigatoToActivity
@@ -29,6 +30,7 @@ class ProductHolder(val view: View): RecyclerView.ViewHolder(view) {
 
         Glide.with(view)
             .load(product.imagemUrl)
+            .error(R.drawable.error_image)
             .transition(DrawableTransitionOptions.withCrossFade())
             .into(view.productImage)
     }
